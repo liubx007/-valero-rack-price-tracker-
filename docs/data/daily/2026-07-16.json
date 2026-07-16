@@ -1,0 +1,600 @@
+{
+  "date": "2026-07-16",
+  "effective_time": "12:00:00 AM",
+  "unit": "CAD cents/litre before tax",
+  "prices": [
+    {
+      "product": "RUL",
+      "terminal": "Charlottetown",
+      "price": 155.8
+    },
+    {
+      "product": "RUL",
+      "terminal": "St. John's",
+      "price": 153.9
+    },
+    {
+      "product": "E10",
+      "terminal": "Montreal",
+      "price": 142.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Quebec",
+      "price": 142.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Sept-Iles",
+      "price": 152.5
+    },
+    {
+      "product": "E10",
+      "terminal": "Toronto",
+      "price": 134.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Hamilton",
+      "price": 134.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Nanticoke",
+      "price": 134.3
+    },
+    {
+      "product": "E10",
+      "terminal": "London",
+      "price": 133.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Sarnia",
+      "price": 133.3
+    },
+    {
+      "product": "E10",
+      "terminal": "Ottawa",
+      "price": 136.3
+    },
+    {
+      "product": "E10",
+      "terminal": "Maitland",
+      "price": 134.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Belleville",
+      "price": 136.9
+    },
+    {
+      "product": "E10",
+      "terminal": "Halifax",
+      "price": 137.3
+    },
+    {
+      "product": "E10",
+      "terminal": "Sydney",
+      "price": 139.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Saint John",
+      "price": 140.6
+    },
+    {
+      "product": "E10",
+      "terminal": "Chatham",
+      "price": 130.4
+    },
+    {
+      "product": "E10",
+      "terminal": "Corner Brook",
+      "price": 140.4
+    },
+    {
+      "product": "E15",
+      "terminal": "Montreal",
+      "price": 137.6
+    },
+    {
+      "product": "E15",
+      "terminal": "Quebec",
+      "price": 137.6
+    },
+    {
+      "product": "E15",
+      "terminal": "Toronto",
+      "price": 133.3
+    },
+    {
+      "product": "E15",
+      "terminal": "Hamilton",
+      "price": 133.3
+    },
+    {
+      "product": "E15",
+      "terminal": "Maitland",
+      "price": 131.3
+    },
+    {
+      "product": "PUL",
+      "terminal": "Ottawa",
+      "price": 162.6
+    },
+    {
+      "product": "PUL",
+      "terminal": "Belleville",
+      "price": 163.2
+    },
+    {
+      "product": "PUL",
+      "terminal": "Saint John",
+      "price": 158.4
+    },
+    {
+      "product": "PUL",
+      "terminal": "Charlottetown",
+      "price": 162.7
+    },
+    {
+      "product": "PUL",
+      "terminal": "St. John's",
+      "price": 157.3
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Montreal",
+      "price": 153.1
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Quebec",
+      "price": 153.1
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Sept-Iles",
+      "price": 166.0
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Toronto",
+      "price": 151.4
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Hamilton",
+      "price": 151.4
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Nanticoke",
+      "price": 150.3
+    },
+    {
+      "product": "EPUL",
+      "terminal": "London",
+      "price": 150.4
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Sarnia",
+      "price": 149.3
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Ottawa",
+      "price": 152.9
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Maitland",
+      "price": 149.4
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Belleville",
+      "price": 153.5
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Halifax",
+      "price": 145.7
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Sydney",
+      "price": 148.2
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Chatham",
+      "price": 143.1
+    },
+    {
+      "product": "EPUL",
+      "terminal": "Corner Brook",
+      "price": 148.8
+    },
+    {
+      "product": "EPUL 93",
+      "terminal": "Ottawa",
+      "price": 152.9
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Montreal",
+      "price": 168.7
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Quebec",
+      "price": 168.7
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Sept-Iles",
+      "price": 177.3
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Toronto",
+      "price": 167.1
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Nanticoke",
+      "price": 166.6
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "London",
+      "price": 165.1
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Sarnia",
+      "price": 165.1
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Ottawa",
+      "price": 157.1
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Maitland",
+      "price": 156.1
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Belleville",
+      "price": 171.4
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Halifax",
+      "price": 148.8
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Sydney",
+      "price": 151.8
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Saint John",
+      "price": 138.2
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Chatham",
+      "price": 149.9
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Charlottetown",
+      "price": 144.7
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "Corner Brook",
+      "price": 144.6
+    },
+    {
+      "product": "FURN. W/O PPD",
+      "terminal": "St. John's",
+      "price": 145.3
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Montreal",
+      "price": 188.2
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Quebec",
+      "price": 188.2
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Sept-Iles",
+      "price": 180.8
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Toronto",
+      "price": 179.1
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Ottawa",
+      "price": 184.1
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Belleville",
+      "price": 182.4
+    },
+    {
+      "product": "STOVE",
+      "terminal": "Saint John",
+      "price": 174.5
+    },
+    {
+      "product": "ULSD B",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD B",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD B",
+      "terminal": "Maitland",
+      "price": 172.1
+    },
+    {
+      "product": "ULSD B",
+      "terminal": "Halifax",
+      "price": 173.5
+    },
+    {
+      "product": "ULSD QC 1",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 1",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 2",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 2",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 3",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 3",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 4",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 4",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 5",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 6",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 6",
+      "terminal": "Sept-Iles",
+      "price": 194.8
+    },
+    {
+      "product": "ULSD QC 7",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 9",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD QC 9",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Toronto",
+      "price": 168.1
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Hamilton",
+      "price": 168.1
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Nanticoke",
+      "price": 167.6
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "London",
+      "price": 166.1
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Sarnia",
+      "price": 166.1
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Maitland",
+      "price": 172.1
+    },
+    {
+      "product": "ULSD ONT 1",
+      "terminal": "Belleville",
+      "price": 172.4
+    },
+    {
+      "product": "ULSD ONT 2",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD ONT 2",
+      "terminal": "Toronto",
+      "price": 168.1
+    },
+    {
+      "product": "ULSD ONT 2",
+      "terminal": "Ottawa",
+      "price": 172.1
+    },
+    {
+      "product": "ULSD ONT 2",
+      "terminal": "Maitland",
+      "price": 172.1
+    },
+    {
+      "product": "ULSD ONT 3",
+      "terminal": "Toronto",
+      "price": 168.1
+    },
+    {
+      "product": "ULSD ONT 5",
+      "terminal": "Montreal",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD ONT 5",
+      "terminal": "Toronto",
+      "price": 168.1
+    },
+    {
+      "product": "ULSD ONT 6",
+      "terminal": "Toronto",
+      "price": 168.1
+    },
+    {
+      "product": "ULSD MAR 1",
+      "terminal": "Halifax",
+      "price": 175.0
+    },
+    {
+      "product": "ULSD MAR 1",
+      "terminal": "Sydney",
+      "price": 177.5
+    },
+    {
+      "product": "ULSD MAR 1",
+      "terminal": "Charlottetown",
+      "price": 184.1
+    },
+    {
+      "product": "ULSD MAR 3",
+      "terminal": "Quebec",
+      "price": 184.7
+    },
+    {
+      "product": "ULSD MAR 3",
+      "terminal": "Saint John",
+      "price": 180.0
+    },
+    {
+      "product": "ULSD MAR 3",
+      "terminal": "Chatham",
+      "price": 167.8
+    },
+    {
+      "product": "ULSD NFDL 1",
+      "terminal": "St. John's",
+      "price": 179.3
+    },
+    {
+      "product": "ULSD NFDL 2",
+      "terminal": "Corner Brook",
+      "price": 163.7
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Montreal",
+      "price": 189.7
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Quebec",
+      "price": 189.7
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Sept-Iles",
+      "price": 196.8
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Toronto",
+      "price": 179.1
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Ottawa",
+      "price": 184.1
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Belleville",
+      "price": 182.4
+    },
+    {
+      "product": "ULSD #1",
+      "terminal": "Charlottetown",
+      "price": 183.1
+    },
+    {
+      "product": "R99",
+      "terminal": "Montreal",
+      "price": 184.7
+    }
+  ],
+  "collected_at": "2026-07-16T12:49:30+00:00",
+  "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
+  "source_sha256": "3d857e4026586546bd918e5a180db26fa5c4fa30f8462c1136a6797899206b4c"
+}

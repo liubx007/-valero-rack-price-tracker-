@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Valero 加拿大终端批发油价历史看板">
+  <title>Rackline · Valero 终端油价</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grid-wash" aria-hidden="true"></div>
+  <main>
+    <header class="masthead reveal">
+      <a class="brand" href="./" aria-label="Rackline 首页">
+        <span class="brand-mark">R/</span>
+        <span>RACKLINE</span>
+      </a>
+      <div class="source-status">
+        <span class="pulse"></span>
+        <span id="freshness">正在读取数据…</span>
+      </div>
+    </header>
+
+    <section class="hero reveal delay-1">
+      <p class="eyebrow">CANADIAN TERMINAL PRICE ARCHIVE · 加拿大终端价格档案</p>
+      <h1>每一分变化，<br><em>都有迹可循。</em></h1>
+      <p class="hero-copy">自动记录 Valero 公开的终端装车价格。单位为加元分/升、税前、EXW；官方价格确认通知始终优先。</p>
+      <a class="source-link" href="https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf" target="_blank" rel="noreferrer">查看今日原始 PDF ↗</a>
+    </section>
+
+    <section class="metrics reveal delay-2" aria-label="最新价格摘要">
+      <article><span>最新生效日</span><strong id="metricDate">—</strong><small id="metricCount">—</small></article>
+      <article><span>市场均价</span><strong id="metricAverage">—</strong><small>全部已报价产品</small></article>
+      <article><span>最低报价</span><strong id="metricLow">—</strong><small id="metricLowLabel">—</small></article>
+      <article><span>最高报价</span><strong id="metricHigh">—</strong><small id="metricHighLabel">—</small></article>
+    </section>
+
+    <section class="panel chart-panel reveal delay-3">
+      <div class="panel-heading">
+        <div>
+          <p class="section-index">01 / PRICE MOVEMENT</p>
+          <h2>价格走势</h2>
+        </div>
+        <div class="controls">
+          <label>产品<select id="productSelect"></select></label>
+          <label>终端<select id="terminalSelect"></select></label>
+        </div>
+      </div>
+      <div id="trendSummary" class="trend-summary"></div>
+      <div class="chart-wrap">
+        <svg id="trendChart" viewBox="0 0 1000 360" role="img" aria-label="所选产品与终端的历史价格折线图"></svg>
+        <div id="chartEmpty" class="chart-empty" hidden>该组合暂无历史报价</div>
+      </div>
+    </section>
+
+    <section class="panel reveal delay-4">
+      <div class="panel-heading">
+        <div>
+          <p class="section-index">02 / LATEST BOARD</p>
+          <h2>最新报价板</h2>
+        </div>
+        <label class="search">筛选<input id="tableSearch" type="search" placeholder="产品或城市"></label>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>产品</th><th>终端</th><th>价格</th><th>与同产品均价</th></tr></thead>
+          <tbody id="priceRows"></tbody>
+        </table>
+      </div>
+      <button id="showMore" class="show-more" type="button">显示更多</button>
+    </section>
+
+    <footer>
+      <p>数据源：Valero Energy Inc. 公开终端装车价格 PDF</p>
+      <p>本项目为独立历史记录工具，与 Valero 无隶属关系。</p>
+    </footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
+
