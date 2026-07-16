@@ -8,11 +8,11 @@ async function boot() {
     const response = await fetch("data/history.json", { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.data = await response.json();
-    if (!state.data.snapshots?.length) throw new Error("没有历史快照");
+    if (!state.data.snapshots?.length) throw new Error("No historical snapshots found");
     setupControls();
     renderAll();
   } catch (error) {
-    $("#freshness").textContent = `数据读取失败 · ${error.message}`;
+    $("#freshness").textContent = `Data unavailable · ${error.message}`;
     $("#chartEmpty").hidden = false;
   }
 }
@@ -42,14 +42,14 @@ function renderMetrics() {
   const low = rows.reduce((a, b) => a.price < b.price ? a : b);
   const high = rows.reduce((a, b) => a.price > b.price ? a : b);
   $("#metricDate").textContent = snapshot.date;
-  $("#metricCount").textContent = `${rows.length} 个有效报价`;
+  $("#metricCount").textContent = `${rows.length} available quotes`;
   $("#metricAverage").textContent = fmt(average);
   $("#metricLow").textContent = fmt(low.price);
   $("#metricLowLabel").textContent = `${low.product} · ${low.terminal}`;
   $("#metricHigh").textContent = fmt(high.price);
   $("#metricHighLabel").textContent = `${high.product} · ${high.terminal}`;
-  const collected = new Date(snapshot.collected_at).toLocaleString("zh-CN", { dateStyle: "medium", timeStyle: "short" });
-  $("#freshness").textContent = `最新 ${snapshot.date} · 采集于 ${collected}`;
+  const collected = new Date(snapshot.collected_at).toLocaleString("en-CA", { dateStyle: "medium", timeStyle: "short" });
+  $("#freshness").textContent = `Latest ${snapshot.date} · collected ${collected}`;
 }
 
 function series() {
@@ -67,7 +67,7 @@ function renderTrend() {
   const values = points.map(p => p.value);
   const latestValue = values.at(-1);
   const change = points.length > 1 ? latestValue - values.at(-2) : 0;
-  $("#trendSummary").innerHTML = `<strong>${fmt(latestValue)}/L</strong> ${state.product} · ${state.terminal} · 较上次 ${change >= 0 ? "+" : ""}${change.toFixed(2)}¢`;
+  $("#trendSummary").innerHTML = `<strong>${fmt(latestValue)}/L</strong> ${state.product} · ${state.terminal} · vs. previous ${change >= 0 ? "+" : ""}${change.toFixed(2)}¢`;
   const W = 1000, H = 360, pad = { l: 68, r: 28, t: 22, b: 50 };
   let min = Math.min(...values), max = Math.max(...values);
   const spread = max - min || Math.max(4, max * .04);
@@ -104,4 +104,3 @@ function renderTable() {
 }
 
 boot();
-
