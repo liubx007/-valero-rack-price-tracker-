@@ -36,11 +36,11 @@ python scripts/collect.py --pdf path/to/rpt_Terminal_Rack_Prices.pdf
 
 1. 在 GitHub 创建空仓库，把本项目推送到 `main`。
 2. 打开 **Settings → Pages**。
-3. 在 **Build and deployment** 选择 **Deploy from a branch**。
-4. 选择 `main` 分支和 `/docs` 目录，保存。
-5. 在 **Actions** 手动运行一次 `Collect daily rack prices`，确认工作流有写入权限。
+3. 在 **Build and deployment → Source** 选择 **GitHub Actions**。
+4. 打开 **Settings → Actions → General**，在 **Workflow permissions** 选择 **Read and write permissions** 并保存。
+5. 在 **Actions** 手动运行一次 `Collect daily rack prices`。
 
-之后采集任务每天运行一次；只有 PDF 内容变化时才会产生提交。GitHub 的定时任务可能延迟，漏跑时可在 Actions 页面手动触发。
+采集完成后，同一个任务会直接部署 `docs` 目录，因此由机器人提交的新数据也会立即反映到网页。之后任务每天运行一次；只有 PDF 内容变化时才会产生提交。GitHub 的定时任务可能延迟，漏跑时可在 Actions 页面手动触发。
 
 ## 数据结构
 
