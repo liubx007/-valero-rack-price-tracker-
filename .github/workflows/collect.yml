@@ -1,6 +1,9 @@
 name: Collect daily rack prices
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "20 10 * * *"
   workflow_dispatch:
