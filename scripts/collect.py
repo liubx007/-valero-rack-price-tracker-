@@ -106,11 +106,16 @@ def parse_pdf(payload: bytes) -> dict:
     if invalid:
         raise ValueError(f"implausible price values: {invalid[:3]}")
 
+    e10_prices = [row for row in prices if row["product"] == "E10"]
+    if len(e10_prices) < 10:
+        raise ValueError(f"E10 sanity check failed: only {len(e10_prices)} terminal quotes")
+
     return {
         "date": effective_date,
         "effective_time": effective_time,
         "unit": "CAD cents/litre before tax",
-        "prices": prices,
+        "product": "E10",
+        "prices": e10_prices,
     }
 
 
@@ -129,7 +134,8 @@ def write_snapshot(parsed: dict, payload: bytes, output_dir: Path) -> bool:
     }
     if destination.exists():
         previous = json.loads(destination.read_text(encoding="utf-8"))
-        if previous.get("source_sha256") == digest:
+        is_e10_only = all(row.get("product") == "E10" for row in previous.get("prices", []))
+        if previous.get("source_sha256") == digest and is_e10_only:
             rebuild_history(output_dir)
             return False
 
@@ -143,7 +149,13 @@ def write_snapshot(parsed: dict, payload: bytes, output_dir: Path) -> bool:
 def rebuild_history(output_dir: Path) -> None:
     snapshots = []
     for path in sorted((output_dir / "daily").glob("*.json")):
-        snapshots.append(json.loads(path.read_text(encoding="utf-8")))
+        snapshot = json.loads(path.read_text(encoding="utf-8"))
+        snapshot["product"] = "E10"
+        snapshot["prices"] = [row for row in snapshot.get("prices", []) if row.get("product") == "E10"]
+        path.write_text(
+            json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        snapshots.append(snapshot)
     history = {
         "schema_version": 1,
         "source_url": SOURCE_URL,
@@ -179,4 +191,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

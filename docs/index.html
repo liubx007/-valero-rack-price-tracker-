@@ -3,76 +3,117 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Valero Canadian terminal rack price history dashboard">
-  <title>Rackline · Valero Terminal Prices</title>
+  <meta name="description" content="Daily E10 terminal rack price tracker with Halifax as the primary market">
+  <meta name="theme-color" content="#101715">
+  <title>Rackline E10 | Halifax Rack Price</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="grid-wash" aria-hidden="true"></div>
+  <div class="page-grid" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Rackline E10 home">
+      <span class="brand-glyph">R//</span>
+      <span class="brand-copy"><strong>RACKLINE</strong><small>E10 TERMINAL MONITOR</small></span>
+    </a>
+    <div class="system-status">
+      <span class="status-light"></span>
+      <span id="freshness">CONNECTING TO PRICE FEED</span>
+    </div>
+    <a class="source-button" href="https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf" target="_blank" rel="noreferrer">SOURCE PDF <span>↗</span></a>
+  </header>
+
   <main>
-    <header class="masthead reveal">
-      <a class="brand" href="./" aria-label="Rackline home">
-        <span class="brand-mark">R/</span>
-        <span>RACKLINE</span>
-      </a>
-      <div class="source-status">
-        <span class="pulse"></span>
-        <span id="freshness">Loading latest data…</span>
+    <section class="hero reveal">
+      <div class="hazard-line" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="product-lockup">
+          <span class="fuel-tag">E10</span>
+          <span>REGULAR UNLEADED<br>WITH ETHANOL</span>
+        </div>
+        <p class="location-kicker">PRIMARY MARKET / HALIFAX, NS</p>
+        <div class="price-lockup">
+          <strong id="heroPrice">---.--</strong>
+          <span class="price-unit">CAD<br>CENTS / L</span>
+        </div>
+        <div class="price-meta">
+          <span id="heroDelta">WAITING FOR BASELINE</span>
+          <span>EFFECTIVE <b id="effectiveDate">----</b></span>
+        </div>
       </div>
-    </header>
-
-    <section class="hero reveal delay-1">
-      <p class="eyebrow">CANADIAN TERMINAL PRICE ARCHIVE</p>
-      <h1>Every cent,<br><em>accounted for.</em></h1>
-      <p class="hero-copy">An independent daily archive of Valero's published terminal rack prices. Values are Canadian cents per litre, before tax, EXW. Official price confirmations always take precedence.</p>
-      <a class="source-link" href="https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf" target="_blank" rel="noreferrer">View today's source PDF ↗</a>
+      <aside class="hero-aside">
+        <p class="micro-label">FEED SPECIFICATION</p>
+        <dl>
+          <div><dt>PRODUCT</dt><dd>E10</dd></div>
+          <div><dt>REFERENCE</dt><dd>HALIFAX</dd></div>
+          <div><dt>BASIS</dt><dd>EXW / PRE-TAX</dd></div>
+          <div><dt>CURRENCY</dt><dd>CAD</dd></div>
+        </dl>
+        <p class="legal-note">Published rack prices are indicative. Official Valero price confirmations take precedence.</p>
+      </aside>
     </section>
 
-    <section class="metrics reveal delay-2" aria-label="Latest price summary">
-      <article><span>Effective date</span><strong id="metricDate">—</strong><small id="metricCount">—</small></article>
-      <article><span>Market average</span><strong id="metricAverage">—</strong><small>Across all available quotes</small></article>
-      <article><span>Lowest quote</span><strong id="metricLow">—</strong><small id="metricLowLabel">—</small></article>
-      <article><span>Highest quote</span><strong id="metricHigh">—</strong><small id="metricHighLabel">—</small></article>
+    <section class="metric-rail reveal delay-1" aria-label="E10 market summary">
+      <article>
+        <span class="metric-id">MKT / 01</span>
+        <p>Terminal average</p>
+        <strong id="metricAverage">---.--</strong>
+        <small>CAD cents per litre</small>
+      </article>
+      <article>
+        <span class="metric-id">MKT / 02</span>
+        <p>Market range</p>
+        <strong id="metricRange">--.--</strong>
+        <small id="metricRangeLabel">Highest minus lowest</small>
+      </article>
+      <article>
+        <span class="metric-id">MKT / 03</span>
+        <p>Quoted terminals</p>
+        <strong id="metricCount">--</strong>
+        <small>Available E10 locations</small>
+      </article>
     </section>
 
-    <section class="panel chart-panel reveal delay-3">
-      <div class="panel-heading">
+    <section class="panel chart-panel reveal delay-2">
+      <div class="panel-header">
         <div>
-          <p class="section-index">01 / PRICE MOVEMENT</p>
-          <h2>Price movement</h2>
+          <p class="panel-code">TREND / E10 / CAD CPL</p>
+          <h1>Rack price history</h1>
         </div>
-        <div class="controls">
-          <label>Product<select id="productSelect"></select></label>
-          <label>Terminal<select id="terminalSelect"></select></label>
-        </div>
+        <label class="terminal-control">TERMINAL
+          <select id="terminalSelect" aria-label="Select terminal for price history"></select>
+        </label>
       </div>
-      <div id="trendSummary" class="trend-summary"></div>
+      <div class="trend-readout" id="trendSummary">LOADING SERIES</div>
       <div class="chart-wrap">
-        <svg id="trendChart" viewBox="0 0 1000 360" role="img" aria-label="Historical price chart for the selected product and terminal"></svg>
-        <div id="chartEmpty" class="chart-empty" hidden>No historical quotes for this selection</div>
+        <svg id="trendChart" viewBox="0 0 1000 380" role="img" aria-label="Historical E10 rack price chart"></svg>
+        <div id="chartEmpty" class="chart-empty" hidden>NO QUOTES FOR THIS TERMINAL</div>
       </div>
     </section>
 
-    <section class="panel reveal delay-4">
-      <div class="panel-heading">
+    <section class="panel board-panel reveal delay-3">
+      <div class="panel-header board-heading">
         <div>
-          <p class="section-index">02 / LATEST BOARD</p>
-          <h2>Latest price board</h2>
+          <p class="panel-code">TERMINAL BOARD / LATEST EFFECTIVE DATE</p>
+          <h1>E10 market board</h1>
         </div>
-        <label class="search">Filter<input id="tableSearch" type="search" placeholder="Product or terminal"></label>
+        <label class="search-control">FILTER TERMINAL
+          <input id="tableSearch" type="search" placeholder="Type a city" autocomplete="off">
+        </label>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Product</th><th>Terminal</th><th>Price</th><th>Vs. product average</th></tr></thead>
+          <thead>
+            <tr><th>Terminal</th><th>E10 rack price</th><th>Vs. Halifax</th><th>Vs. market avg.</th></tr>
+          </thead>
           <tbody id="priceRows"></tbody>
         </table>
       </div>
-      <button id="showMore" class="show-more" type="button">Show more</button>
     </section>
 
     <footer>
-      <p>Source: Valero Energy Inc. public terminal rack price PDF</p>
-      <p>Independent historical archive. Not affiliated with Valero.</p>
+      <span>RACKLINE // E10 TERMINAL PRICE ARCHIVE</span>
+      <span>DATA: VALERO ENERGY INC. PUBLIC RACK PRICE PDF</span>
+      <span>INDEPENDENT / NOT AFFILIATED WITH VALERO</span>
     </footer>
   </main>
   <script src="app.js" defer></script>
