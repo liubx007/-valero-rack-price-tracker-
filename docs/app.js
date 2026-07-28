@@ -125,10 +125,6 @@ function attachTrendCursor({ svg, points, x, y, width, height, pad }) {
     hitbox.setAttribute("aria-valuetext", `${point.date}, ${state.terminal}, ${price(point.value)}`);
   }
 
-  function hideCursor() {
-    cursor.setAttribute("visibility", "hidden");
-  }
-
   function indexFromPointer(event) {
     if (points.length === 1) return 0;
     const bounds = svg.getBoundingClientRect();
@@ -136,16 +132,25 @@ function attachTrendCursor({ svg, points, x, y, width, height, pad }) {
     return Math.round((viewX - pad.left) / plotWidth * (points.length - 1));
   }
 
-  svg.onpointerenter = (event) => showPoint(indexFromPointer(event));
-  svg.onpointermove = (event) => showPoint(indexFromPointer(event));
-  svg.onpointerleave = hideCursor;
+  const updateFromPointer = (event) => showPoint(indexFromPointer(event));
+  hitbox.addEventListener("pointerenter", updateFromPointer);
+  hitbox.addEventListener("pointermove", updateFromPointer);
+  hitbox.addEventListener("pointerdown", (event) => {
+    hitbox.setPointerCapture?.(event.pointerId);
+    updateFromPointer(event);
+  });
+  hitbox.addEventListener("pointerup", (event) => {
+    if (hitbox.hasPointerCapture?.(event.pointerId)) {
+      hitbox.releasePointerCapture(event.pointerId);
+    }
+  });
   hitbox.addEventListener("focus", () => showPoint(activeIndex));
-  hitbox.addEventListener("blur", hideCursor);
   hitbox.addEventListener("keydown", (event) => {
     if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
     event.preventDefault();
     showPoint(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
   });
+  showPoint(activeIndex);
 }
 
 function renderTrend() {

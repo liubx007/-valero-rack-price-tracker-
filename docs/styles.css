@@ -132,7 +132,8 @@ select:focus, input:focus { border-color: var(--fuel); }
 .chart-tooltip-box { fill: var(--ink); stroke: var(--fuel); stroke-width: 1.5; }
 .chart-tooltip-label { fill: #b9c2be; font: 9px var(--mono); letter-spacing: .08em; }
 .chart-tooltip-value { fill: #fff4dc; font: 700 20px var(--mono); }
-.chart-empty { position: absolute; inset: 0; display: grid; place-items: center; color: var(--steel); font: 11px var(--mono); }
+.chart-empty { position: absolute; inset: 0; display: grid; place-items: center; color: var(--steel); font: 11px var(--mono); pointer-events: none; }
+.chart-empty[hidden] { display: none; }
 .board-heading { align-items: center; }
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; font: 12px var(--mono); }
