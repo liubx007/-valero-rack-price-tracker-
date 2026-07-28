@@ -1,0 +1,91 @@
+{
+  "date": "2026-07-28",
+  "effective_time": "12:00:00 AM",
+  "unit": "CAD cents/litre before tax",
+  "product": "E10",
+  "prices": [
+    {
+      "product": "E10",
+      "terminal": "Montreal",
+      "price": 143.5
+    },
+    {
+      "product": "E10",
+      "terminal": "Quebec",
+      "price": 143.5
+    },
+    {
+      "product": "E10",
+      "terminal": "Sept-Iles",
+      "price": 153.2
+    },
+    {
+      "product": "E10",
+      "terminal": "Toronto",
+      "price": 135.4
+    },
+    {
+      "product": "E10",
+      "terminal": "Hamilton",
+      "price": 135.4
+    },
+    {
+      "product": "E10",
+      "terminal": "Nanticoke",
+      "price": 134.9
+    },
+    {
+      "product": "E10",
+      "terminal": "London",
+      "price": 134.4
+    },
+    {
+      "product": "E10",
+      "terminal": "Sarnia",
+      "price": 133.9
+    },
+    {
+      "product": "E10",
+      "terminal": "Ottawa",
+      "price": 136.9
+    },
+    {
+      "product": "E10",
+      "terminal": "Maitland",
+      "price": 135.4
+    },
+    {
+      "product": "E10",
+      "terminal": "Belleville",
+      "price": 137.5
+    },
+    {
+      "product": "E10",
+      "terminal": "Halifax",
+      "price": 134.8
+    },
+    {
+      "product": "E10",
+      "terminal": "Sydney",
+      "price": 137.3
+    },
+    {
+      "product": "E10",
+      "terminal": "Saint John",
+      "price": 139.4
+    },
+    {
+      "product": "E10",
+      "terminal": "Chatham",
+      "price": 128.2
+    },
+    {
+      "product": "E10",
+      "terminal": "Corner Brook",
+      "price": 139.0
+    }
+  ],
+  "collected_at": "2026-07-28T12:16:38+00:00",
+  "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
+  "source_sha256": "371da63d5131d320b40b060402757754f9794b75c58f8585fe76771ef7815dd1"
+}
