@@ -119,12 +119,19 @@ select:focus, input:focus { border-color: var(--fuel); }
 .trend-readout b { color: var(--fuel-hot); font: 700 28px var(--mono); }
 .trend-readout span { color: var(--steel); font: 10px var(--mono); letter-spacing: .1em; }
 .chart-wrap { position: relative; min-height: 390px; padding: 0 18px 12px; }
-#trendChart { display: block; width: 100%; min-height: 340px; }
+#trendChart { display: block; width: 100%; min-height: 340px; user-select: none; }
 .chart-grid { stroke: rgba(21,35,30,.13); stroke-width: 1; stroke-dasharray: 3 6; }
 .chart-axis { fill: #66736e; font: 11px var(--mono); }
 .chart-line { fill: none; stroke: var(--fuel); stroke-width: 3; vector-effect: non-scaling-stroke; }
 .chart-area { fill: url(#fuelFill); }
 .chart-point { fill: var(--panel); stroke: var(--fuel-hot); stroke-width: 3; vector-effect: non-scaling-stroke; }
+.chart-hitbox { fill: transparent; cursor: crosshair; touch-action: none; outline: none; }
+.chart-hitbox:focus { stroke: var(--fuel); stroke-width: 1; stroke-dasharray: 3 6; }
+.chart-cursor-line { stroke: var(--fuel-hot); stroke-width: 1.5; stroke-dasharray: 5 5; vector-effect: non-scaling-stroke; }
+.chart-cursor-point { fill: var(--panel); stroke: var(--fuel-hot); stroke-width: 4; vector-effect: non-scaling-stroke; }
+.chart-tooltip-box { fill: var(--ink); stroke: var(--fuel); stroke-width: 1.5; }
+.chart-tooltip-label { fill: #b9c2be; font: 9px var(--mono); letter-spacing: .08em; }
+.chart-tooltip-value { fill: #fff4dc; font: 700 20px var(--mono); }
 .chart-empty { position: absolute; inset: 0; display: grid; place-items: center; color: var(--steel); font: 11px var(--mono); }
 .board-heading { align-items: center; }
 .table-wrap { overflow-x: auto; }

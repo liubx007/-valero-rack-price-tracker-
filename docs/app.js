@@ -87,6 +87,67 @@ function selectedSeries() {
   }).filter(Boolean);
 }
 
+function attachTrendCursor({ svg, points, x, y, width, height, pad }) {
+  const cursor = svg.querySelector("#trendCursor");
+  const cursorLine = svg.querySelector("#cursorLine");
+  const cursorPoint = svg.querySelector("#cursorPoint");
+  const cursorTooltip = svg.querySelector("#cursorTooltip");
+  const cursorDate = svg.querySelector("#cursorDate");
+  const cursorValue = svg.querySelector("#cursorValue");
+  const hitbox = svg.querySelector("#chartHitbox");
+  const plotWidth = width - pad.left - pad.right;
+  let activeIndex = points.length - 1;
+
+  function showPoint(index) {
+    activeIndex = Math.max(0, Math.min(points.length - 1, index));
+    const point = points[activeIndex];
+    const pointX = x(activeIndex);
+    const pointY = y(point.value);
+    const tooltipWidth = 190;
+    const tooltipHeight = 66;
+    const tooltipX = pointX > width - pad.right - tooltipWidth - 18
+      ? pointX - tooltipWidth - 14
+      : pointX + 14;
+    const tooltipY = Math.max(
+      pad.top + 6,
+      Math.min(height - pad.bottom - tooltipHeight - 6, pointY - tooltipHeight / 2)
+    );
+
+    cursor.setAttribute("visibility", "visible");
+    cursorLine.setAttribute("x1", pointX);
+    cursorLine.setAttribute("x2", pointX);
+    cursorPoint.setAttribute("cx", pointX);
+    cursorPoint.setAttribute("cy", pointY);
+    cursorTooltip.setAttribute("transform", `translate(${tooltipX} ${tooltipY})`);
+    cursorDate.textContent = `${point.date} / ${state.terminal.toUpperCase()}`;
+    cursorValue.textContent = price(point.value);
+    hitbox.setAttribute("aria-valuenow", String(activeIndex));
+    hitbox.setAttribute("aria-valuetext", `${point.date}, ${state.terminal}, ${price(point.value)}`);
+  }
+
+  function hideCursor() {
+    cursor.setAttribute("visibility", "hidden");
+  }
+
+  function indexFromPointer(event) {
+    if (points.length === 1) return 0;
+    const bounds = svg.getBoundingClientRect();
+    const viewX = (event.clientX - bounds.left) * width / bounds.width;
+    return Math.round((viewX - pad.left) / plotWidth * (points.length - 1));
+  }
+
+  svg.onpointerenter = (event) => showPoint(indexFromPointer(event));
+  svg.onpointermove = (event) => showPoint(indexFromPointer(event));
+  svg.onpointerleave = hideCursor;
+  hitbox.addEventListener("focus", () => showPoint(activeIndex));
+  hitbox.addEventListener("blur", hideCursor);
+  hitbox.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    showPoint(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
+  });
+}
+
 function renderTrend() {
   const points = selectedSeries();
   const svg = $("#trendChart");
@@ -127,7 +188,20 @@ function renderTrend() {
   const circles = points.map((point, index) =>
     `<circle class="chart-point" cx="${x(index)}" cy="${y(point.value)}" r="5"><title>${point.date}: ${price(point.value)}</title></circle>`
   ).join("");
-  svg.innerHTML = `<defs><linearGradient id="fuelFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b544" stop-opacity=".24"/><stop offset="1" stop-color="#f2b544" stop-opacity="0"/></linearGradient></defs>${grid}<path class="chart-area" d="${area}"/><path class="chart-line" d="${line}"/>${circles}${labels}`;
+  const cursor = `
+    <g id="trendCursor" class="chart-cursor" visibility="hidden" pointer-events="none">
+      <line id="cursorLine" class="chart-cursor-line" y1="${pad.top}" y2="${height - pad.bottom}"/>
+      <circle id="cursorPoint" class="chart-cursor-point" r="8"/>
+      <g id="cursorTooltip" class="chart-tooltip">
+        <rect class="chart-tooltip-box" width="190" height="66"/>
+        <text id="cursorDate" class="chart-tooltip-label" x="14" y="22"></text>
+        <text id="cursorValue" class="chart-tooltip-value" x="14" y="49"></text>
+      </g>
+    </g>
+    <rect id="chartHitbox" class="chart-hitbox" x="${pad.left}" y="${pad.top}" width="${width - pad.left - pad.right}" height="${height - pad.top - pad.bottom}" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="${points.length - 1}" aria-label="Explore E10 price history with pointer or arrow keys"/>
+  `;
+  svg.innerHTML = `<defs><linearGradient id="fuelFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b544" stop-opacity=".24"/><stop offset="1" stop-color="#f2b544" stop-opacity="0"/></linearGradient></defs>${grid}<path class="chart-area" d="${area}"/><path class="chart-line" d="${line}"/>${circles}${labels}${cursor}`;
+  attachTrendCursor({ svg, points, x, y, width, height, pad });
 }
 
 function renderTable() {
