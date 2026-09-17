@@ -60,26 +60,34 @@ function renderPriceBridge() {
     $("#componentLedger").innerHTML = '<p class="bridge-error">REGULATED PRICE FEED UNAVAILABLE</p>';
     return;
   }
-  const rows = [
-    ["Market benchmark", data.benchmark_price, "MARKET"],
-    ["Forward averaging correction", data.forward_averaging_correction, "ADJUSTMENT"],
-    ["Zone 1 transportation", data.transportation_adjustment, "FEE"],
-    ["Federal carbon charge", data.carbon_charge, "TAX"],
-    ["Clean Fuel Regulations adjustor", data.clean_fuel_adjustor, "FEE"],
-    ["Wholesale margin", data.wholesale_margin, "MARGIN"],
-    ["Federal excise tax", data.federal_excise_tax, "TAX"],
-    ["Nova Scotia motive fuel tax", data.provincial_motive_fuel_tax, "TAX"]
-  ];
-  $("#componentLedger").innerHTML = rows.map(([label, value, type], index) => `
-    <div class="ledger-row">
-      <span class="ledger-index">${String(index + 1).padStart(2, "0")}</span>
-      <span class="ledger-label">${esc(label)}<small>${type}</small></span>
-      <b>${value >= 0 ? "+" : ""}${value.toFixed(2)}¢/L</b>
-    </div>`).join("") + `
-    <div class="ledger-row ledger-subtotal">
-      <span class="ledger-index">Σ</span>
-      <span class="ledger-label">Wholesale selling price<small>SUBTOTAL</small></span>
-      <b>${price(data.wholesale_selling_price)}</b>
+  const baseWholesale = data.base_wholesale_price ??
+    data.wholesale_selling_price - data.federal_excise_tax - data.provincial_motive_fuel_tax;
+  let runningTotal = baseWholesale;
+  const steps = [
+    { label: "Base wholesale price", type: "START", add: null, total: runningTotal },
+    { label: "Federal excise tax", type: "TAX", add: data.federal_excise_tax },
+    { label: "Nova Scotia motive fuel tax", type: "TAX", add: data.provincial_motive_fuel_tax },
+    { label: "Retail mark-up", type: "MARGIN", add: data.retail_markup_min },
+    { label: "Credit-card fee adjustment", type: "FEE", add: data.markup_adjustment_min },
+    { label: "Harmonized Sales Tax", type: "TAX", add: data.hst_min }
+  ].map((step) => {
+    if (step.add !== null) runningTotal += step.add;
+    return { ...step, total: runningTotal };
+  });
+  $("#componentLedger").innerHTML = `
+    <div class="ledger-head"><span>STEP</span><span>PRICE COMPONENT</span><span>ADD</span><span>RUNNING TOTAL</span></div>
+    ${steps.map((step, index) => `
+      <div class="ledger-row${index === 0 ? " ledger-start" : ""}">
+        <span class="ledger-index">${index === 0 ? "BASE" : String(index).padStart(2, "0")}</span>
+        <span class="ledger-label">${esc(step.label)}<small>${step.type}</small></span>
+        <span class="ledger-add">${step.add === null ? "—" : `${step.add >= 0 ? "+" : ""}${step.add.toFixed(2)}`}</span>
+        <b>${step.total.toFixed(2)}¢/L</b>
+      </div>`).join("")}
+    <div class="ledger-row ledger-final">
+      <span class="ledger-index">FINAL</span>
+      <span class="ledger-label">Regulated minimum pump price<small>ROUND TO 0.1¢</small></span>
+      <span class="ledger-add">≈</span>
+      <b>${data.pump_price_min.toFixed(1)}¢/L</b>
     </div>`;
 
   $("#pumpPrice").textContent = data.pump_price_min.toFixed(1);
@@ -87,8 +95,10 @@ function renderPriceBridge() {
   $("#regulatedDate").textContent = data.effective_date;
   $("#regulatedSource").href = data.landing_url;
   $("#bridgeFormula").innerHTML = `
-    <span>${data.wholesale_selling_price.toFixed(2)} WHOLESALE</span>
-    <i>+</i><span>${data.retail_markup_min.toFixed(2)} RETAIL MARGIN</span>
+    <span>${baseWholesale.toFixed(2)} BASE WHOLESALE</span>
+    <i>+</i><span>${data.federal_excise_tax.toFixed(2)} FEDERAL EXCISE</span>
+    <i>+</i><span>${data.provincial_motive_fuel_tax.toFixed(2)} PROVINCIAL TAX</span>
+    <i>+</i><span>${data.retail_markup_min.toFixed(2)} RETAIL MARK-UP</span>
     <i>+</i><span>${data.markup_adjustment_min.toFixed(2)} CARD-FEE ADJ.</span>
     <i>+</i><span>${data.hst_min.toFixed(2)} HST</span>
     <i>=</i><strong>${data.pump_price_min.toFixed(1)}¢/L</strong>`;

@@ -146,6 +146,12 @@ def parse_breakdown(payload: bytes) -> dict:
         "service": "Self-Service",
         "unit": "CAD cents/litre",
         **values,
+        "base_wholesale_price": round(
+            values["wholesale_selling_price"]
+            - values["federal_excise_tax"]
+            - values["provincial_motive_fuel_tax"],
+            2,
+        ),
         "retail_markup_min": ranges["retail_markup"][0],
         "retail_markup_max": ranges["retail_markup"][1],
         "markup_adjustment_min": ranges["markup_adjustment"][0],
@@ -167,7 +173,9 @@ def write_snapshot(parsed: dict, payload: bytes, source_url: str, output: Path) 
     }
     if output.exists():
         previous = json.loads(output.read_text(encoding="utf-8"))
-        if previous.get("source_sha256") == snapshot["source_sha256"]:
+        source_unchanged = previous.get("source_sha256") == snapshot["source_sha256"]
+        schema_unchanged = all(previous.get(key) == value for key, value in parsed.items())
+        if source_unchanged and schema_unchanged:
             return False
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

@@ -15,6 +15,7 @@
   "federal_excise_tax": 0.0,
   "provincial_motive_fuel_tax": 15.5,
   "wholesale_selling_price": 158.8,
+  "base_wholesale_price": 143.3,
   "retail_markup_min": 7.1,
   "retail_markup_max": 9.7,
   "markup_adjustment_min": 0.9,
@@ -23,7 +24,7 @@
   "hst_max": 23.72,
   "pump_price_min": 190.2,
   "pump_price_max": 193.1,
-  "collected_at": "2026-09-17T14:49:28+00:00",
+  "collected_at": "2026-09-17T18:36:43+00:00",
   "landing_url": "https://nserbt.ca/nseb/mandates/gasoline-diesel-pricing/gasoline-diesel-prices-zone-map",
   "source_url": "https://nserbt.ca/sites/default/files/Weekly%20Petroleum%20Pricing%20Example%20Sep%2012-26.pdf",
   "source_sha256": "91f0b35c009981b1865a6e8f400769c7b38a3e3d059fca1758bea68cbeaa723f"
