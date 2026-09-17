@@ -1,6 +1,6 @@
 const PRODUCT = "E10";
 const PRIMARY_TERMINAL = "Halifax";
-const state = { data: null, terminal: PRIMARY_TERMINAL };
+const state = { data: null, regulated: null, terminal: PRIMARY_TERMINAL };
 const $ = (selector) => document.querySelector(selector);
 const price = (value) => `${value.toFixed(2)}\u00A2/L`;
 const signed = (value) => `${value >= 0 ? "+" : ""}${value.toFixed(2)}\u00A2`;
@@ -18,9 +18,13 @@ function latest() {
 
 async function boot() {
   try {
-    const response = await fetch("data/history.json", { cache: "no-store" });
+    const [response, regulatedResponse] = await Promise.all([
+      fetch(`data/history.json?t=${Date.now()}`, { cache: "no-store" }),
+      fetch(`data/regulated.json?t=${Date.now()}`, { cache: "no-store" })
+    ]);
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     state.data = await response.json();
+    if (regulatedResponse.ok) state.regulated = await regulatedResponse.json();
     if (!state.data.snapshots?.length) throw new Error("NO HISTORICAL SNAPSHOTS");
     setupTerminalControl();
     renderAll();
@@ -45,8 +49,49 @@ function setupTerminalControl() {
 
 function renderAll() {
   renderHeroAndMetrics();
+  renderPriceBridge();
   renderTrend();
   renderTable();
+}
+
+function renderPriceBridge() {
+  const data = state.regulated;
+  if (!data) {
+    $("#componentLedger").innerHTML = '<p class="bridge-error">REGULATED PRICE FEED UNAVAILABLE</p>';
+    return;
+  }
+  const rows = [
+    ["Market benchmark", data.benchmark_price, "MARKET"],
+    ["Forward averaging correction", data.forward_averaging_correction, "ADJUSTMENT"],
+    ["Zone 1 transportation", data.transportation_adjustment, "FEE"],
+    ["Federal carbon charge", data.carbon_charge, "TAX"],
+    ["Clean Fuel Regulations adjustor", data.clean_fuel_adjustor, "FEE"],
+    ["Wholesale margin", data.wholesale_margin, "MARGIN"],
+    ["Federal excise tax", data.federal_excise_tax, "TAX"],
+    ["Nova Scotia motive fuel tax", data.provincial_motive_fuel_tax, "TAX"]
+  ];
+  $("#componentLedger").innerHTML = rows.map(([label, value, type], index) => `
+    <div class="ledger-row">
+      <span class="ledger-index">${String(index + 1).padStart(2, "0")}</span>
+      <span class="ledger-label">${esc(label)}<small>${type}</small></span>
+      <b>${value >= 0 ? "+" : ""}${value.toFixed(2)}¢/L</b>
+    </div>`).join("") + `
+    <div class="ledger-row ledger-subtotal">
+      <span class="ledger-index">Σ</span>
+      <span class="ledger-label">Wholesale selling price<small>SUBTOTAL</small></span>
+      <b>${price(data.wholesale_selling_price)}</b>
+    </div>`;
+
+  $("#pumpPrice").textContent = data.pump_price_min.toFixed(1);
+  $("#pumpMaximum").textContent = `${data.pump_price_max.toFixed(1)}¢/L`;
+  $("#regulatedDate").textContent = data.effective_date;
+  $("#regulatedSource").href = data.landing_url;
+  $("#bridgeFormula").innerHTML = `
+    <span>${data.wholesale_selling_price.toFixed(2)} WHOLESALE</span>
+    <i>+</i><span>${data.retail_markup_min.toFixed(2)} RETAIL MARGIN</span>
+    <i>+</i><span>${data.markup_adjustment_min.toFixed(2)} CARD-FEE ADJ.</span>
+    <i>+</i><span>${data.hst_min.toFixed(2)} HST</span>
+    <i>=</i><strong>${data.pump_price_min.toFixed(1)}¢/L</strong>`;
 }
 
 function renderHeroAndMetrics() {

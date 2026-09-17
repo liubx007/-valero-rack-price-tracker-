@@ -6,7 +6,8 @@ Rackline E10 archives the daily [Valero Canadian terminal rack price PDF](https:
 
 ## Features
 
-- Daily collection through GitHub Actions at 10:20 UTC
+- Source checks every 30 minutes through GitHub Actions
+- Nova Scotia Zone 1 regulated pump-price component breakdown
 - Coordinate-based extraction from the source PDF's sparse terminal matrix
 - E10-only historical snapshots with source SHA-256 provenance
 - Halifax E10 as the primary headline and default trend series
@@ -22,6 +23,7 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 python scripts/collect.py
+python scripts/collect_regulated.py
 python -m http.server 8000 --directory docs
 ```
 
@@ -47,6 +49,7 @@ The same workflow collects data, commits source changes and deploys the `docs` d
 
 - `docs/data/daily/YYYY-MM-DD.json`: one complete E10 snapshot per effective date
 - `docs/data/history.json`: merged history consumed by the dashboard
+- `docs/data/regulated.json`: current Halifax/Zone 1 regulated price components
 - `source_sha256`: source PDF fingerprint for change detection and auditability
 
 Source PDFs are not committed by default, avoiding roughly 80 MB of repository growth per year. To archive the binary source files, run:

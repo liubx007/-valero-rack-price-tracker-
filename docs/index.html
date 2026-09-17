@@ -6,7 +6,7 @@
   <meta name="description" content="Daily E10 terminal rack price tracker with Halifax as the primary market">
   <meta name="theme-color" content="#f0ecdf">
   <title>Rackline E10 | Halifax Rack Price</title>
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <div class="page-grid" aria-hidden="true"></div>
@@ -73,7 +73,32 @@
       </article>
     </section>
 
-    <section class="panel chart-panel reveal delay-2">
+    <section class="panel bridge-panel reveal delay-2" aria-labelledby="bridgeTitle">
+      <div class="panel-header bridge-heading">
+        <div>
+          <p class="panel-code">HALIFAX / ZONE 1 / REGULATED SELF-SERVICE</p>
+          <h1 id="bridgeTitle">From market to pump</h1>
+        </div>
+        <a id="regulatedSource" class="panel-link" href="https://nserbt.ca/nseb/mandates/gasoline-diesel-pricing/gasoline-diesel-prices-zone-map" target="_blank" rel="noreferrer">NOVA SCOTIA ENERGY BOARD ↗</a>
+      </div>
+      <div class="bridge-layout">
+        <div>
+          <p class="bridge-note">Official Zone 1 regular-gasoline components. This regulated benchmark is independent of the Valero Halifax rack quote shown above.</p>
+          <div id="componentLedger" class="component-ledger" aria-label="Regulated pump price components"></div>
+        </div>
+        <aside class="pump-ticket">
+          <span class="metric-id">FINAL / MINIMUM</span>
+          <p>Regulated pump price</p>
+          <strong id="pumpPrice">---.-</strong>
+          <span class="pump-unit">CAD ¢ / L</span>
+          <div class="pump-range"><span>MAXIMUM SELF-SERVICE</span><b id="pumpMaximum">---.-¢/L</b></div>
+          <div class="pump-range"><span>EFFECTIVE</span><b id="regulatedDate">----</b></div>
+        </aside>
+      </div>
+      <div class="bridge-formula" id="bridgeFormula">LOADING REGULATED PRICE COMPONENTS</div>
+    </section>
+
+    <section class="panel chart-panel reveal delay-3">
       <div class="panel-header">
         <div>
           <p class="panel-code">TREND / E10 / CAD CPL</p>
@@ -112,10 +137,10 @@
 
     <footer>
       <span>RACKLINE // E10 TERMINAL PRICE ARCHIVE</span>
-      <span>DATA: VALERO ENERGY INC. PUBLIC RACK PRICE PDF</span>
+      <span>DATA: VALERO + NOVA SCOTIA ENERGY BOARD</span>
       <span>INDEPENDENT / NOT AFFILIATED WITH VALERO</span>
     </footer>
   </main>
-  <script src="app.js?v=3" defer></script>
+  <script src="app.js?v=4" defer></script>
 </body>
 </html>
