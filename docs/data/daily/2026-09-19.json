@@ -77,10 +77,10 @@
     {
       "product": "E10",
       "terminal": "Corner Brook",
-      "price": 147.8
+      "price": 147.2
     }
   ],
-  "collected_at": "2026-09-18T23:13:53+00:00",
+  "collected_at": "2026-09-19T14:44:24+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "fe6478d25661914fdfba4cbc15514e9b28307103e4d8bd330fc988ff9619e76f"
+  "source_sha256": "f61d7437307230e1c9aa5aff20308746c1076e81ac85f0e3bce8afec009f402a"
 }
