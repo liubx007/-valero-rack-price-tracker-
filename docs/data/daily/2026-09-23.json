@@ -7,12 +7,12 @@
     {
       "product": "E10",
       "terminal": "Montreal",
-      "price": 150.7
+      "price": 148.2
     },
     {
       "product": "E10",
       "terminal": "Quebec",
-      "price": 150.7
+      "price": 148.2
     },
     {
       "product": "E10",
@@ -80,7 +80,7 @@
       "price": 145.7
     }
   ],
-  "collected_at": "2026-09-22T23:14:10+00:00",
+  "collected_at": "2026-09-23T13:35:14+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "1c57ea0d5c0df8b8b09473c13ba6d81df7302ffd1598e3e3580c447041365e8e"
+  "source_sha256": "d54dc9eeb052b1b92c08b79f339ed7af3405631522e465abf0e3999701bdac8c"
 }
