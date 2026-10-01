@@ -1,6 +1,6 @@
 {
   "date": "2026-10-01",
-  "effective_time": "12:00:00 AM",
+  "effective_time": "11:00:00 AM",
   "unit": "CAD cents/litre before tax",
   "product": "E10",
   "prices": [
@@ -72,7 +72,7 @@
     {
       "product": "E10",
       "terminal": "Saint John",
-      "price": 146.8
+      "price": 145.3
     },
     {
       "product": "E10",
@@ -80,7 +80,7 @@
       "price": 145.0
     }
   ],
-  "collected_at": "2026-09-30T22:34:08+00:00",
+  "collected_at": "2026-10-01T15:23:24+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "b5be94dfa5b1ecc7933e3be04ccb71806af503e6940409dbbf6bf2feb20ca7a0"
+  "source_sha256": "c27b7e3a64a284fc862de0a187ea6dab1016ee7156fc5d710bd7ebe9f817f183"
 }
