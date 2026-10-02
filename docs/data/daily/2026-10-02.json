@@ -7,67 +7,67 @@
     {
       "product": "E10",
       "terminal": "Montreal",
-      "price": 154.9
+      "price": 154.7
     },
     {
       "product": "E10",
       "terminal": "Quebec",
-      "price": 154.9
+      "price": 154.7
     },
     {
       "product": "E10",
       "terminal": "Sept-Iles",
-      "price": 169.0
+      "price": 168.8
     },
     {
       "product": "E10",
       "terminal": "Toronto",
-      "price": 148.6
+      "price": 148.4
     },
     {
       "product": "E10",
       "terminal": "Hamilton",
-      "price": 148.6
+      "price": 148.4
     },
     {
       "product": "E10",
       "terminal": "Nanticoke",
-      "price": 148.1
+      "price": 147.9
     },
     {
       "product": "E10",
       "terminal": "London",
-      "price": 147.6
+      "price": 147.4
     },
     {
       "product": "E10",
       "terminal": "Sarnia",
-      "price": 147.1
+      "price": 146.9
     },
     {
       "product": "E10",
       "terminal": "Ottawa",
-      "price": 148.6
+      "price": 148.4
     },
     {
       "product": "E10",
       "terminal": "Maitland",
-      "price": 148.6
+      "price": 148.4
     },
     {
       "product": "E10",
       "terminal": "Belleville",
-      "price": 150.7
+      "price": 150.5
     },
     {
       "product": "E10",
       "terminal": "Halifax",
-      "price": 147.5
+      "price": 146.7
     },
     {
       "product": "E10",
       "terminal": "Sydney",
-      "price": 150.0
+      "price": 148.4
     },
     {
       "product": "E10",
@@ -80,7 +80,7 @@
       "price": 150.9
     }
   ],
-  "collected_at": "2026-10-02T00:08:30+00:00",
+  "collected_at": "2026-10-02T12:26:45+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "4b4f0c751df27a4c0a9db88da9c3a598f331fa35cdc35a22f6623a30aee3d66c"
+  "source_sha256": "385960546223e6b568249006fac5117228333b5bc707963e943b432ab0c224a5"
 }
