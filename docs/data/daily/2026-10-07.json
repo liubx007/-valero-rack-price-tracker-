@@ -62,7 +62,7 @@
     {
       "product": "E10",
       "terminal": "Halifax",
-      "price": 141.5
+      "price": 140.7
     },
     {
       "product": "E10",
@@ -80,7 +80,7 @@
       "price": 145.7
     }
   ],
-  "collected_at": "2026-10-06T21:11:43+00:00",
+  "collected_at": "2026-10-07T14:43:18+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "2414604786b448ed8a34480582331f6db5e657ee955d92e2cd5656e619ee5fc7"
+  "source_sha256": "3981b890ac05e06df0988d5a8a7590e2debb0ba146d5e347ab9a2eb2efccfe41"
 }
