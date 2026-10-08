@@ -80,7 +80,7 @@
       "price": 141.8
     }
   ],
-  "collected_at": "2026-10-08T00:23:07+00:00",
+  "collected_at": "2026-10-08T13:59:43+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "810bea4b11b4c86da581c9cf8554c75658c82dd45a94d55314320f7ff4bba754"
+  "source_sha256": "0dc08ee1a6a9104c6b2e98f440f96a40afc3447948360d8dda71034ad3a5ddd5"
 }
