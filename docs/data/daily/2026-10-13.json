@@ -72,7 +72,7 @@
     {
       "product": "E10",
       "terminal": "Saint John",
-      "price": 144.1
+      "price": 143.8
     },
     {
       "product": "E10",
@@ -80,7 +80,7 @@
       "price": 139.2
     }
   ],
-  "collected_at": "2026-10-13T01:16:01+00:00",
+  "collected_at": "2026-10-13T16:22:51+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "95767dd67112e3a7719bdc44baa4ba64f757b68a4f08964dc26354eb7be75c79"
+  "source_sha256": "93445e76a85bf918ae973ab610c719cfa1b9e0b9559d38a6f4487a4658864211"
 }
