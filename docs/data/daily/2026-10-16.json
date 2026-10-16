@@ -62,12 +62,12 @@
     {
       "product": "E10",
       "terminal": "Halifax",
-      "price": 133.6
+      "price": 132.8
     },
     {
       "product": "E10",
       "terminal": "Sydney",
-      "price": 136.0
+      "price": 135.3
     },
     {
       "product": "E10",
@@ -80,7 +80,7 @@
       "price": 134.3
     }
   ],
-  "collected_at": "2026-10-15T21:17:24+00:00",
+  "collected_at": "2026-10-16T14:11:19+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "ba3e9cf415c685e4f8e3f247026ea428492e9b966d16622e3ccd7912111030bf"
+  "source_sha256": "f8bc2c26708486cadbf8bc68b3d8991e030a369c933c5b29675976feaf4bc12b"
 }
