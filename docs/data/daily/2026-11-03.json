@@ -7,80 +7,80 @@
     {
       "product": "E10",
       "terminal": "Montreal",
-      "price": 133.5
+      "price": 132.6
     },
     {
       "product": "E10",
       "terminal": "Quebec",
-      "price": 133.5
+      "price": 132.6
     },
     {
       "product": "E10",
       "terminal": "Sept-Iles",
-      "price": 147.6
+      "price": 146.7
     },
     {
       "product": "E10",
       "terminal": "Toronto",
-      "price": 128.0
+      "price": 127.1
     },
     {
       "product": "E10",
       "terminal": "Hamilton",
-      "price": 128.0
+      "price": 127.1
     },
     {
       "product": "E10",
       "terminal": "Nanticoke",
-      "price": 127.5
+      "price": 126.6
     },
     {
       "product": "E10",
       "terminal": "London",
-      "price": 127.0
+      "price": 126.1
     },
     {
       "product": "E10",
       "terminal": "Sarnia",
-      "price": 126.5
+      "price": 125.6
     },
     {
       "product": "E10",
       "terminal": "Ottawa",
-      "price": 125.5
+      "price": 124.6
     },
     {
       "product": "E10",
       "terminal": "Maitland",
-      "price": 125.5
+      "price": 124.6
     },
     {
       "product": "E10",
       "terminal": "Belleville",
-      "price": 127.6
+      "price": 126.7
     },
     {
       "product": "E10",
       "terminal": "Halifax",
-      "price": 125.8
+      "price": 124.4
     },
     {
       "product": "E10",
       "terminal": "Sydney",
-      "price": 128.2
+      "price": 126.8
     },
     {
       "product": "E10",
       "terminal": "Saint John",
-      "price": 130.7
+      "price": 129.1
     },
     {
       "product": "E10",
       "terminal": "Corner Brook",
-      "price": 127.8
+      "price": 127.4
     }
   ],
-  "collected_at": "2026-11-02T23:51:05+00:00",
+  "collected_at": "2026-11-03T14:38:43+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "f13598673152a3c457a4ff6bf0b8d72be02f130aeef8a75365dce48a2d9ef854"
+  "source_sha256": "323183624f1a794d123f2c91b42a50cf2881348a6a3c16bd13eb3a563a02c53e"
 }
