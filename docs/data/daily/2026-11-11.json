@@ -17,7 +17,7 @@
     {
       "product": "E10",
       "terminal": "Sept-Iles",
-      "price": 137.0
+      "price": 133.3
     },
     {
       "product": "E10",
@@ -62,12 +62,12 @@
     {
       "product": "E10",
       "terminal": "Halifax",
-      "price": 114.0
+      "price": 113.4
     },
     {
       "product": "E10",
       "terminal": "Sydney",
-      "price": 116.4
+      "price": 115.9
     },
     {
       "product": "E10",
@@ -77,10 +77,10 @@
     {
       "product": "E10",
       "terminal": "Corner Brook",
-      "price": 118.3
+      "price": 117.7
     }
   ],
-  "collected_at": "2026-11-10T21:55:30+00:00",
+  "collected_at": "2026-11-11T17:24:39+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "513429d932fe499cddee14f6d20d29075dee0d1fe53d67e8964457b6b428a43a"
+  "source_sha256": "664029c6340acb807497799261378a01048c264dbe9b7bd195779022c5bbac84"
 }
