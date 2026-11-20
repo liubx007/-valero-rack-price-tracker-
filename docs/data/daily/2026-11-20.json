@@ -1,6 +1,6 @@
 {
   "date": "2026-11-20",
-  "effective_time": "12:00:00 AM",
+  "effective_time": "10:00:00 AM",
   "unit": "CAD cents/litre before tax",
   "product": "E10",
   "prices": [
@@ -80,7 +80,7 @@
       "price": 110.9
     }
   ],
-  "collected_at": "2026-11-20T00:54:11+00:00",
+  "collected_at": "2026-11-20T17:13:00+00:00",
   "source_url": "https://valeroapps.valero.com/public/rpt_Terminal_Rack_Prices.pdf",
-  "source_sha256": "075a5d49253fe7845f03381095184300116d510af63db2230c5d2cc39bdd9996"
+  "source_sha256": "bc844ccb9d79de461a58394134126b1dfb46f7a0e8bd6510099c4ffeea791853"
 }
