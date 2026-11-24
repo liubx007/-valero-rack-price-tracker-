@@ -24,8 +24,8 @@
   "hst_max": 19.52,
   "pump_price_min": 156.0,
   "pump_price_max": 159.0,
-  "collected_at": "2026-11-20T08:25:05+00:00",
+  "collected_at": "2026-11-24T06:54:54+00:00",
   "landing_url": "https://nserbt.ca/nseb/mandates/gasoline-diesel-pricing/gasoline-diesel-prices-zone-map",
-  "source_url": "https://nserbt.ca/sites/default/files/Weekly%20Petroleum%20Pricing%20Example%20Nov%2020-26.pdf",
-  "source_sha256": "e265db02e56a9561a52d3dabf130439686a2f58e43e49a8c9ec25d6a82aa2448"
+  "source_url": "https://nserbt.ca/sites/default/files/Weekly%20Petroleum%20Pricing%20Example%20Nov%2024-26.pdf",
+  "source_sha256": "48b0a2e7b389d497dc97de62ed68fad62ed7984fa2d99e8283ebafc072ea8200"
 }
